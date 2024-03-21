@@ -1,0 +1,59 @@
+﻿<Window
+    x:Class="vwatch.Controls.ConfigurationWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:vwatch.Controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="VWatch: Configuration Settings"
+    d:DesignHeight="600"
+    d:DesignWidth="1045"
+    Icon="/vwatch;component/Resources/Icons/vwatch-icon-512.png"
+    WindowStartupLocation="CenterScreen"
+    mc:Ignorable="d">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Controls/Styles/Theme.xaml" />
+                <ResourceDictionary Source="Controls/Styles/Button.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid Background="{StaticResource PrimaryBackgroundColor}">
+
+        <Grid.ColumnDefinitions>
+            <!--  Sidebar  -->
+            <ColumnDefinition Width="Auto" />
+            <!--  Separator  -->
+            <ColumnDefinition Width="0.75" />
+            <!--  Main content area  -->
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Rectangle Grid.Column="0" Fill="{StaticResource SecondaryBackgroundColor}" />
+        <Rectangle Grid.Column="1" Fill="{StaticResource ControlBackgroundColor}" />
+        <Rectangle Grid.Column="2" Fill="{StaticResource PrimaryBackgroundColor}" />
+
+        <local:BrandingSidebar Grid.Column="0" />
+
+        <!--  Configuration settings and controls  -->
+        <Grid Grid.Column="2" Margin="32">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <local:HeaderItems Grid.Column="0" />
+
+            <local:DataGridControl
+                Grid.Row="1"
+                Grid.Column="0"
+                Margin="8,0,8,0" />
+
+            <local:FooterItems Grid.Row="2" Grid.Column="0" />
+        </Grid>
+    </Grid>
+</Window>
