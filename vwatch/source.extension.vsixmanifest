@@ -4,8 +4,8 @@
         <Identity Id="vwatch.ab4ce8bc-e458-4d53-b679-e9f76a54d909" Version="1.0" Language="en-US" Publisher="David James" />
         <DisplayName>VWatch</DisplayName>
         <Description xml:space="preserve">A Visual Studio extension that monitors a selected process and automatically attaches the debugger. VWatch can be configured to monitor multiple target processes for managed and native debugging sessions.</Description>
-        <Icon>Resources\Icon.png</Icon>
-        <PreviewImage>Resources\Icon.png</PreviewImage>
+        <Icon>Resources\Icons\vwatch-icon.png</Icon>
+        <PreviewImage>Resources\Icons\vwatch-icon.png</PreviewImage>
     </Metadata>
     <Installation>
         <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[17.0, 18.0)">

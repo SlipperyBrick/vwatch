@@ -8,7 +8,7 @@
 
   <Commands package="vwatch">
     <Groups>
-      <Group guid="vwatch" id="MyMenuGroup" priority="0x0600">
+      <Group guid="vwatch" id="VWatchMenuGroup" priority="0x0600">
         <Parent guid="VSMainMenu" id="Tools"/>
       </Group>
     </Groups>
@@ -16,22 +16,27 @@
     <!--This section defines the elements the user can interact with, like a menu command or a button
         or combo box in a toolbar. -->
     <Buttons>
-      <Button guid="vwatch" id="MyCommand" priority="0x0100" type="Button">
-        <Parent guid="vwatch" id="MyMenuGroup" />
-        <Icon guid="ImageCatalogGuid" id="StatusInformation" />
-        <CommandFlag>IconIsMoniker</CommandFlag>
-        <Strings>
+      <Button guid="vwatch" id="ShowConfigurationWindow" priority="0x0100" type="Button">
+        <Parent guid="vwatch" id="VWatchMenuGroup" />
+        <Icon guid="GuidVwatchImages" id="vwatchIcon" />
+		  <Strings>
           <ButtonText>VWatch Configuration</ButtonText>
-          <LocCanonicalName>.vwatch.MyCommand</LocCanonicalName>
+          <LocCanonicalName>.vwatch.ShowConfigurationWindow</LocCanonicalName>
         </Strings>
       </Button>
     </Buttons>
+	  <Bitmaps>
+		  <Bitmap guid="GuidVwatchImages" href="Resources\Icons\vwatch-icon-16.png" usedList="vwatchIcon" />
+	  </Bitmaps>
   </Commands>
 
   <Symbols>
     <GuidSymbol name="vwatch" value="{71a2b0cc-2361-4b1f-8b70-efcdebdc2573}">
-      <IDSymbol name="MyMenuGroup" value="0x0001" />
-      <IDSymbol name="MyCommand" value="0x0100" />
+      <IDSymbol name="VWatchMenuGroup" value="0x0001" />
+      <IDSymbol name="ShowConfigurationWindow" value="0x0100" />
     </GuidSymbol>
+	 <GuidSymbol name="GuidVwatchImages" value="{AD951D5E-70CA-4DB5-B3BA-272DA224B1D1}">
+		 <IDSymbol name="vwatchIcon" value="1" />
+	 </GuidSymbol>
   </Symbols>
 </CommandTable>
