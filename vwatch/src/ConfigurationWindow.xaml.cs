@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using vwatch.ViewModels;
 
 namespace vwatch.Controls
 {
@@ -7,11 +8,8 @@ namespace vwatch.Controls
         public ConfigurationWindow()
         {
             InitializeComponent();
-        }
 
-        private void ListView_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
-        {
-
+            this.DataContext = new DataGridViewModel();
         }
     }
 }

@@ -1,4 +1,8 @@
-﻿using vwatch.Controls;
+﻿using Microsoft.Extensions.DependencyInjection;
+
+using vwatch.Controls;
+using vwatch.Services.Interfaces;
+using vwatch.ViewModels;
 
 namespace vwatch
 {
@@ -7,7 +11,16 @@ namespace vwatch
     {
         protected override async Task ExecuteAsync(OleMenuCmdEventArgs e)
         {
-            ConfigurationWindow window = new ConfigurationWindow();
+            var userSettingsService = vwatchPackage.ServiceProvider.GetService<IUserSettingsService>();
+
+            var viewModel = new ConfigurationWindowViewModel(userSettingsService);
+            //await viewModel.LoadConfigurationAsync();
+
+            ConfigurationWindow window = new ConfigurationWindow
+            {
+                DataContext = viewModel
+            };
+
             window.Show();
         }
     }
