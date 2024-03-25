@@ -25,7 +25,7 @@
         <Setter Property="AutoGenerateColumns" Value="False" />
         <Setter Property="IsReadOnly" Value="False" />
         <Setter Property="SelectionMode" Value="Extended" />
-        <Setter Property="SelectionUnit" Value="Cell" />
+        <Setter Property="SelectionUnit" Value="FullRow" />
         <Setter Property="HorizontalGridLinesBrush" Value="Transparent" />
         <Setter Property="VerticalGridLinesBrush" Value="{StaticResource ControlBackgroundColor}" />
         <Setter Property="GridLinesVisibility" Value="Vertical" />

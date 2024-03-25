@@ -58,7 +58,8 @@
             <controls:Header
                 Grid.Row="0"
                 Grid.Column="0"
-                Margin="0" />
+                Margin="0"
+                DataContext="{Binding DataGridViewModel}" />
 
             <controls:DataGrid
                 Grid.Row="1"

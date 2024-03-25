@@ -27,11 +27,11 @@
             x:Name="ProcessList"
             Grid.Row="1"
             Margin="0,32,0,0"
-            behaviors:DataGridDoubleClickBehavior.Command="{Binding DataContext.AddItemCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}}"
+            behaviors:DataGridDoubleClickBehavior.Command="{Binding AddItemCommand}"
             CellStyle="{StaticResource DataGridCellStyle}"
             ColumnHeaderStyle="{StaticResource DataGridColumnHeaderStyle}"
             ItemsSource="{Binding Items}"
-            SelectedItem="{Binding SelectedItem}"
+            SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
             Style="{StaticResource DataGridStyle}">
 
             <DataGrid.Columns>
@@ -53,7 +53,7 @@
                     <DataGridTemplateColumn.CellEditingTemplate>
                         <DataTemplate>
                             <ComboBox
-                                ItemsSource="{Binding DebuggerOptions}"
+                                ItemsSource="{Binding DataContext.DebuggerOptions, RelativeSource={RelativeSource AncestorType=UserControl}}"
                                 SelectedItem="{Binding Debugger, UpdateSourceTrigger=PropertyChanged}"
                                 Style="{StaticResource DataGridComboBoxStyle}" />
                         </DataTemplate>
@@ -70,7 +70,7 @@
                     <DataGridTemplateColumn.CellEditingTemplate>
                         <DataTemplate>
                             <ComboBox
-                                ItemsSource="{Binding AttachProcessOptions}"
+                                ItemsSource="{Binding DataContext.AttachProcessOptions, RelativeSource={RelativeSource AncestorType=UserControl}}"
                                 SelectedItem="{Binding AttachAtProcessStartWhen, UpdateSourceTrigger=PropertyChanged}"
                                 Style="{StaticResource DataGridComboBoxStyle}" />
                         </DataTemplate>
@@ -87,7 +87,7 @@
                     <DataGridTemplateColumn.CellEditingTemplate>
                         <DataTemplate>
                             <ComboBox
-                                ItemsSource="{Binding ProcessStartOptions}"
+                                ItemsSource="{Binding DataContext.ProcessStartOptions, RelativeSource={RelativeSource AncestorType=UserControl}}"
                                 SelectedItem="{Binding AtProcessStart, UpdateSourceTrigger=PropertyChanged}"
                                 Style="{StaticResource DataGridComboBoxStyle}" />
                         </DataTemplate>
@@ -104,7 +104,7 @@
                     <DataGridTemplateColumn.CellEditingTemplate>
                         <DataTemplate>
                             <ComboBox
-                                ItemsSource="{Binding ConditionsOptions}"
+                                ItemsSource="{Binding DataContext.ConditionsOptions, RelativeSource={RelativeSource AncestorType=UserControl}}"
                                 SelectedItem="{Binding Conditions, UpdateSourceTrigger=PropertyChanged}"
                                 Style="{StaticResource DataGridComboBoxStyle}" />
                         </DataTemplate>

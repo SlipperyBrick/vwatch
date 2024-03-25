@@ -26,6 +26,7 @@
         <Button
             Margin="8"
             Padding="8,2"
+            Command="{Binding DataContext.SaveConfigurationCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
             Content="OK"
             Style="{StaticResource ButtonStyle}" />
         <Button

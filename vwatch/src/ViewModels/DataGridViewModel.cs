@@ -17,8 +17,8 @@ namespace vwatch.ViewModels
         private ObservableCollection<DataGridModel> _items = new ObservableCollection<DataGridModel>();
         public ObservableCollection<DataGridModel> Items
         {
-            get { return _items; }
-            set { SetProperty(ref _items, value); }
+            get => _items;
+            set => SetProperty(ref _items, value);
         }
 
         private DataGridModel _selectedItem;
@@ -28,18 +28,17 @@ namespace vwatch.ViewModels
             set => SetProperty(ref _selectedItem, value);
         }
 
-        public List<string> DebuggerOptions { get; } = new List<string> { "Managed", "Native" };
-        public List<string> AttachProcessOptions { get; } = new List<string> { "Always", "I'm debugging its immediate parent", "I'm debugging any of its parents", "I'm not already debugging its exe" };
-        public List<string> ProcessStartOptions { get; } = new List<string> { "Continue", "Break" };
-        public List<string> ConditionsOptions { get; } = new List<string> { "Add", "None" };
-
         private bool _isCollectionEmpty;
-
         public bool IsCollectionEmpty
         {
             get => _isCollectionEmpty;
             private set => SetProperty(ref _isCollectionEmpty, value);
         }
+
+        public List<string> DebuggerOptions { get; } = new List<string> { "Managed", "Native" };
+        public List<string> AttachProcessOptions { get; } = new List<string> { "Always", "I'm debugging its immediate parent", "I'm debugging any of its parents", "I'm not already debugging its exe" };
+        public List<string> ProcessStartOptions { get; } = new List<string> { "Continue", "Break" };
+        public List<string> ConditionsOptions { get; } = new List<string> { "Add", "None" };
 
         public DataGridViewModel()
         {
@@ -102,8 +101,13 @@ namespace vwatch.ViewModels
 
         public void UpdateItems(ObservableCollection<DataGridModel> items)
         {
-            Items = items;
-            OnPropertyChanged(nameof(Items));
+            Items.Clear();
+
+            foreach (var item in items)
+            {
+                Items.Add(item);
+            }
+
             UpdateIsEmpty();
         }
     }
