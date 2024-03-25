@@ -38,13 +38,13 @@
             Grid.Column="1"
             Margin="8"
             Padding="8,2"
-            Command="{Binding DataGridViewModel.AddItemCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
+            Command="{Binding Path=DataContext.DataGridViewModel.AddItemCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}}"
             Content="Add"
             Style="{StaticResource ButtonStyle}" />
         <Button
             Grid.Column="2"
             Margin="8"
-            Command="{Binding DataGridViewModel.RemoveItemCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
+            Command="{Binding Path=DataContext.DataGridViewModel.RemoveItemCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}}"
             Content="Remove"
             Style="{StaticResource ButtonStyle}" />
 

@@ -27,11 +27,11 @@
             x:Name="ProcessList"
             Grid.Row="1"
             Margin="0,32,0,0"
-            behaviors:DataGridDoubleClickBehavior.Command="{Binding DataGridViewModel.Items, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
+            behaviors:DataGridDoubleClickBehavior.Command="{Binding DataContext.AddItemCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}}"
             CellStyle="{StaticResource DataGridCellStyle}"
             ColumnHeaderStyle="{StaticResource DataGridColumnHeaderStyle}"
-            ItemsSource="{Binding DataGridViewModel.Items, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
-            SelectedItem="{Binding DataGridViewModel.Items, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
+            ItemsSource="{Binding Items}"
+            SelectedItem="{Binding SelectedItem}"
             Style="{StaticResource DataGridStyle}">
 
             <DataGrid.Columns>
@@ -124,7 +124,7 @@
             Opacity="0.25"
             Style="{StaticResource PlaceHolderTextStyle}"
             Text="Double-click here or click Add to get started."
-            Visibility="{Binding DataGridViewModel.IsCollectionEmpty, Converter={StaticResource BoolToVisibility}, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" />
+            Visibility="{Binding IsCollectionEmpty, Converter={StaticResource BoolToVisibility}}" />
 
     </Grid>
 </UserControl>
