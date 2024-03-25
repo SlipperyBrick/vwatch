@@ -5,5 +5,7 @@ namespace vwatch.Models
     public class UserSettingsModel
     {
         public ObservableCollection<DataGridModel> DataGridItems { get; set; } = new ObservableCollection<DataGridModel>();
+
+        public bool CheckboxState { get; set; }
     }
 }

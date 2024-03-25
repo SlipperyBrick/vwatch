@@ -32,7 +32,7 @@
             VerticalContentAlignment="Center"
             Content="Enable VWatch. Automatically attach to these processes when they start:"
             Foreground="{StaticResource ControlForegroundColor}"
-            IsChecked="True"
+            IsChecked="{Binding DataContext.CheckboxState, Mode=TwoWay, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
             Style="{StaticResource CheckboxStyle}" />
         <Button
             Grid.Column="1"
