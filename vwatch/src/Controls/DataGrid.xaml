@@ -1,5 +1,5 @@
 ﻿<UserControl
-    x:Class="vwatch.Controls.DataGridControl"
+    x:Class="vwatch.Controls.DataGrid"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:behaviors="clr-namespace:vwatch.Behaviors"
@@ -27,11 +27,11 @@
             x:Name="ProcessList"
             Grid.Row="1"
             Margin="0,32,0,0"
-            behaviors:DataGridDoubleClickBehavior.Command="{Binding AddItemCommand}"
+            behaviors:DataGridDoubleClickBehavior.Command="{Binding DataGridViewModel.Items, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
             CellStyle="{StaticResource DataGridCellStyle}"
             ColumnHeaderStyle="{StaticResource DataGridColumnHeaderStyle}"
-            ItemsSource="{Binding Items}"
-            SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
+            ItemsSource="{Binding DataGridViewModel.Items, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
+            SelectedItem="{Binding DataGridViewModel.Items, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
             Style="{StaticResource DataGridStyle}">
 
             <DataGrid.Columns>
@@ -43,7 +43,7 @@
                     EditingElementStyle="{StaticResource TransparentTextBox}"
                     Header="Filename (my.exe) or wildcard (C:\folder\*.exe)" />
 
-                <!--  Debugger combox  -->
+                <!--  Debugger combobox  -->
                 <DataGridTemplateColumn Width="Auto" Header="Debugger">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
@@ -53,7 +53,7 @@
                     <DataGridTemplateColumn.CellEditingTemplate>
                         <DataTemplate>
                             <ComboBox
-                                ItemsSource="{Binding DataContext.DebuggerOptions, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}}"
+                                ItemsSource="{Binding DebuggerOptions}"
                                 SelectedItem="{Binding Debugger, UpdateSourceTrigger=PropertyChanged}"
                                 Style="{StaticResource DataGridComboBoxStyle}" />
                         </DataTemplate>
@@ -70,7 +70,7 @@
                     <DataGridTemplateColumn.CellEditingTemplate>
                         <DataTemplate>
                             <ComboBox
-                                ItemsSource="{Binding DataContext.AttachProcessOptions, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}}"
+                                ItemsSource="{Binding AttachProcessOptions}"
                                 SelectedItem="{Binding AttachAtProcessStartWhen, UpdateSourceTrigger=PropertyChanged}"
                                 Style="{StaticResource DataGridComboBoxStyle}" />
                         </DataTemplate>
@@ -87,7 +87,7 @@
                     <DataGridTemplateColumn.CellEditingTemplate>
                         <DataTemplate>
                             <ComboBox
-                                ItemsSource="{Binding DataContext.ProcessStartOptions, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}}"
+                                ItemsSource="{Binding ProcessStartOptions}"
                                 SelectedItem="{Binding AtProcessStart, UpdateSourceTrigger=PropertyChanged}"
                                 Style="{StaticResource DataGridComboBoxStyle}" />
                         </DataTemplate>
@@ -104,7 +104,7 @@
                     <DataGridTemplateColumn.CellEditingTemplate>
                         <DataTemplate>
                             <ComboBox
-                                ItemsSource="{Binding DataContext.ConditionsOptions, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}}"
+                                ItemsSource="{Binding ConditionsOptions}"
                                 SelectedItem="{Binding Conditions, UpdateSourceTrigger=PropertyChanged}"
                                 Style="{StaticResource DataGridComboBoxStyle}" />
                         </DataTemplate>
@@ -124,7 +124,7 @@
             Opacity="0.25"
             Style="{StaticResource PlaceHolderTextStyle}"
             Text="Double-click here or click Add to get started."
-            Visibility="{Binding IsCollectionEmpty, Converter={StaticResource BoolToVisibility}}" />
+            Visibility="{Binding DataGridViewModel.IsCollectionEmpty, Converter={StaticResource BoolToVisibility}, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" />
 
     </Grid>
 </UserControl>

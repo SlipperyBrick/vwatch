@@ -1,5 +1,5 @@
 ﻿<UserControl
-    x:Class="vwatch.Controls.HeaderItems"
+    x:Class="vwatch.Controls.Footer"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -13,40 +13,25 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Styles/Theme.xaml" />
                 <ResourceDictionary Source="Styles/Button.xaml" />
-                <ResourceDictionary Source="Styles/Checkbox.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
 
-    <Grid Grid.Row="0">
-
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="Auto" />
-        </Grid.ColumnDefinitions>
-
-        <CheckBox
-            Grid.Column="0"
-            Margin="8"
-            VerticalContentAlignment="Center"
-            Content="Enable VWatch. Automatically attach to these processes when they start:"
-            Foreground="{StaticResource ControlForegroundColor}"
-            IsChecked="True"
-            Style="{StaticResource CheckboxStyle}" />
+    <!--  Footer with buttons  -->
+    <StackPanel
+        Grid.Row="2"
+        HorizontalAlignment="Right"
+        VerticalAlignment="Center"
+        Orientation="Horizontal">
         <Button
-            Grid.Column="1"
             Margin="8"
             Padding="8,2"
-            Command="{Binding AddItemCommand}"
-            Content="Add"
+            Content="OK"
             Style="{StaticResource ButtonStyle}" />
         <Button
-            Grid.Column="2"
             Margin="8"
-            Command="{Binding RemoveItemCommand}"
-            Content="Remove"
+            Padding="8,2"
+            Content="Cancel"
             Style="{StaticResource ButtonStyle}" />
-
-    </Grid>
+    </StackPanel>
 </UserControl>

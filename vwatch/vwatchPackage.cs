@@ -1,17 +1,17 @@
-﻿global using Community.VisualStudio.Toolkit;
-global using Microsoft.VisualStudio.Shell;
-global using System;
-global using Task = System.Threading.Tasks.Task;
-
-using Microsoft.VisualStudio.Settings;
-using Microsoft.VisualStudio.Shell.Settings;
-using System.Runtime.InteropServices;
+﻿using Community.VisualStudio.Toolkit;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.VisualStudio.Shell;
+using Microsoft.VisualStudio.Shell.Settings;
+using Microsoft.VisualStudio.Settings;
+using System;
+using System.Runtime.InteropServices;
 using System.Threading;
 
-using vwatch.ViewModels;
-using vwatch.Services.Interfaces;
+using Task = System.Threading.Tasks.Task;
+
 using vwatch.Services;
+using vwatch.Services.Interfaces;
+using vwatch.ViewModels;
 
 namespace vwatch
 {
@@ -25,19 +25,17 @@ namespace vwatch
 
         protected override async Task InitializeAsync(CancellationToken cancellationToken, IProgress<ServiceProgressData> progress)
         {
+            await this.RegisterCommandsAsync();
+            await JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
+
             var services = new ServiceCollection();
             ConfigureServices(services);
 
             ServiceProvider = services.BuildServiceProvider();
-
-            await this.RegisterCommandsAsync();
-
-            await JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
         }
 
         private void ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton<IUserSettingsService, UserSettingsService>();
             services.AddSingleton<ConfigurationWindowViewModel>();
 
             services.AddSingleton<WritableSettingsStore>(provider =>
@@ -46,6 +44,9 @@ namespace vwatch
                 var shellSettingsManager = new ShellSettingsManager(this);
                 return shellSettingsManager.GetWritableSettingsStore(SettingsScope.UserSettings);
             });
+
+            services.AddSingleton<IUserSettingsService, UserSettingsService>(provider =>
+                new UserSettingsService(provider.GetRequiredService<WritableSettingsStore>()));
         }
 
         public static T GetService<T>() where T : class

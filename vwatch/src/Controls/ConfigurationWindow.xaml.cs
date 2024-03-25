@@ -8,8 +8,6 @@ namespace vwatch.Controls
         public ConfigurationWindow()
         {
             InitializeComponent();
-
-            this.DataContext = new DataGridViewModel();
         }
     }
 }

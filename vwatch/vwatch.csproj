@@ -49,27 +49,25 @@
     <Compile Include="src\Behaviors\DataGridDeselect.cs" />
     <Compile Include="src\Behaviors\DataGridDoubleClick.cs" />
     <Compile Include="src\Commands\ShowConfigurationWindow.cs" />
-    <Compile Include="src\ConfigurationWindow.xaml.cs">
+    <Compile Include="src\Controls\ConfigurationWindow.xaml.cs">
       <DependentUpon>ConfigurationWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="src\Controls\BrandingSidebar.xaml.cs">
-      <DependentUpon>BrandingSidebar.xaml</DependentUpon>
+    <Compile Include="src\Controls\Sidebar.xaml.cs">
+      <DependentUpon>Sidebar.xaml</DependentUpon>
     </Compile>
-    <Compile Include="src\Controls\FooterItems.xaml.cs">
-      <DependentUpon>FooterItems.xaml</DependentUpon>
+    <Compile Include="src\Controls\Footer.xaml.cs">
+      <DependentUpon>Footer.xaml</DependentUpon>
     </Compile>
-    <Compile Include="src\Controls\HeaderItems.xaml.cs">
-      <DependentUpon>HeaderItems.xaml</DependentUpon>
+    <Compile Include="src\Controls\Header.xaml.cs">
+      <DependentUpon>Header.xaml</DependentUpon>
     </Compile>
-    <Compile Include="src\Controls\DataGridControl.xaml.cs">
-      <DependentUpon>DataGridControl.xaml</DependentUpon>
+    <Compile Include="src\Controls\DataGrid.xaml.cs">
+      <DependentUpon>DataGrid.xaml</DependentUpon>
     </Compile>
     <Compile Include="src\Models\DataGridModel.cs" />
-    <Compile Include="src\Models\UserSettings.cs" />
-    <Compile Include="src\Objects\SettingsService.cs" />
+    <Compile Include="src\Models\UserSettingsModel.cs" />
     <Compile Include="src\Services\Interfaces\IUserSettingsService.cs" />
     <Compile Include="src\Services\UserSettingsService.cs" />
-    <Compile Include="src\Utilities\ServiceProviderContainer.cs" />
     <Compile Include="src\ViewModels\ConfigurationWindowViewModel.cs" />
     <Compile Include="src\ViewModels\DataGridViewModel.cs" />
     <Compile Include="vwatchPackage.cs" />
@@ -129,25 +127,28 @@
     <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf">
       <Version>1.1.77</Version>
     </PackageReference>
+    <PackageReference Include="System.Text.Json">
+      <Version>8.0.3</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="src\ConfigurationWindow.xaml">
+    <Page Include="src\Controls\ConfigurationWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="src\Controls\BrandingSidebar.xaml">
+    <Page Include="src\Controls\Sidebar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="src\Controls\FooterItems.xaml">
+    <Page Include="src\Controls\Footer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="src\Controls\HeaderItems.xaml">
+    <Page Include="src\Controls\Header.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="src\Controls\DataGridControl.xaml">
+    <Page Include="src\Controls\DataGrid.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -2,9 +2,9 @@
 
 namespace vwatch.Controls
 {
-    public partial class BrandingSidebar : UserControl
+    public partial class Footer : UserControl
     {
-        public BrandingSidebar()
+        public Footer()
         {
             InitializeComponent();
         }

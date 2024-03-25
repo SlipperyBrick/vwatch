@@ -8,7 +8,7 @@ using vwatch.Models;
 
 namespace vwatch.ViewModels
 {
-    internal class DataGridViewModel : ObservableObject
+    public class DataGridViewModel : ObservableObject
     {
         public RelayCommand AddItemCommand { get; }
         public RelayCommand RemoveItemCommand { get; }
@@ -17,8 +17,8 @@ namespace vwatch.ViewModels
         private ObservableCollection<DataGridModel> _items = new ObservableCollection<DataGridModel>();
         public ObservableCollection<DataGridModel> Items
         {
-            get => _items;
-            set => SetProperty(ref _items, value);
+            get { return _items; }
+            set { SetProperty(ref _items, value); }
         }
 
         private DataGridModel _selectedItem;
@@ -98,6 +98,13 @@ namespace vwatch.ViewModels
         private void UpdateIsEmpty()
         {
             IsCollectionEmpty = Items.Count == 0;
+        }
+
+        public void UpdateItems(ObservableCollection<DataGridModel> items)
+        {
+            Items = items;
+            OnPropertyChanged(nameof(Items));
+            UpdateIsEmpty();
         }
     }
 }

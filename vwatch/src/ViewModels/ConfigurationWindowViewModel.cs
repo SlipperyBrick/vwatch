@@ -1,18 +1,16 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-using System.Collections.ObjectModel;
 using CommunityToolkit.Mvvm.Input;
-using Newtonsoft.Json;
+using System.Threading.Tasks;
 
 using vwatch.Models;
 using vwatch.Services.Interfaces;
-using System.Configuration;
-using System.Diagnostics;
 
 namespace vwatch.ViewModels
 {
-    internal class ConfigurationWindowViewModel : ObservableObject
+    public class ConfigurationWindowViewModel : ObservableObject
     {
         public AsyncRelayCommand SaveConfigurationCommand { get; }
+        public AsyncRelayCommand LoadConfigurationCommand { get; }
 
         public DataGridViewModel DataGridViewModel { get; set; }
 
@@ -21,52 +19,33 @@ namespace vwatch.ViewModels
         public ConfigurationWindowViewModel(IUserSettingsService userSettingsService)
         {
             SaveConfigurationCommand = new AsyncRelayCommand(async () => await SaveConfigurationAsync());
+            LoadConfigurationCommand = new AsyncRelayCommand(async () => await LoadConfigurationAsync());
 
             DataGridViewModel = new DataGridViewModel();
 
             _userSettingsService = userSettingsService;
         }
 
-        public string SerializeConfiguration()
-        {
-            var settings = new
-            {
-                DataGridItems = DataGridViewModel.Items,
-            };
-
-            return JsonConvert.SerializeObject(settings);
-        }
-
-        public void DeserializeConfiguration(string json)
-        {
-            if (string.IsNullOrWhiteSpace(json)) return;
-
-            try
-            {
-                var settings = JsonConvert.DeserializeObject<ConfigurationSettings>(json);
-
-                /*if (settings?.DataGridItems != null)
-                {
-                    DataGridViewModel.Items = settings.DataGridItems;
-                }*/
-            }
-            catch (JsonException ex)
-            {
-                Debug.WriteLine($"Failed to deserialize configuration: {ex.Message}");
-            }
-        }
-
-
         private async Task SaveConfigurationAsync()
         {
-            string configurationJson = SerializeConfiguration();
-            await _userSettingsService.SaveConfigurationAsync(configurationJson);
+            var settings = new UserSettingsModel
+            {
+                DataGridItems = DataGridViewModel.Items
+            };
+
+            await _userSettingsService.SaveUserSettingsAsync(settings);
         }
 
         public async Task LoadConfigurationAsync()
         {
-            string configurationJson = await _userSettingsService.LoadConfigurationAsync();
-            DeserializeConfiguration(configurationJson);
+            var userSettings = await _userSettingsService.LoadUserSettingsAsync();
+            DataGridViewModel.UpdateItems(userSettings.DataGridItems);
+
+            // Assuming there's a way to update DataGridViewModel based on settings
+            // DataGridViewModel.SomeProperty = settings.SomeSetting;
+
+            // Notify the UI that the DataGridViewModel has been updated (if needed)
+            OnPropertyChanged(nameof(DataGridViewModel));
         }
     }
 }

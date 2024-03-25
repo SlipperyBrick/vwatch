@@ -1,4 +1,7 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Community.VisualStudio.Toolkit;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.VisualStudio.Shell;
+using System.Threading.Tasks;
 
 using vwatch.Controls;
 using vwatch.Services.Interfaces;
@@ -14,7 +17,7 @@ namespace vwatch
             var userSettingsService = vwatchPackage.ServiceProvider.GetService<IUserSettingsService>();
 
             var viewModel = new ConfigurationWindowViewModel(userSettingsService);
-            //await viewModel.LoadConfigurationAsync();
+            await viewModel.LoadConfigurationAsync();
 
             ConfigurationWindow window = new ConfigurationWindow
             {

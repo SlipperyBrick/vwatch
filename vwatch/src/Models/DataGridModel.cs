@@ -1,6 +1,6 @@
 ﻿namespace vwatch.Models
 {
-    internal class DataGridModel
+    public class DataGridModel
     {
         public string Filename { get; set; }
         public string Debugger { get; set; }

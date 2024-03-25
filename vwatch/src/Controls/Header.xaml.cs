@@ -2,9 +2,9 @@
 
 namespace vwatch.Controls
 {
-    public partial class DataGridControl : UserControl
+    public partial class Header : UserControl
     {
-        public DataGridControl()
+        public Header()
         {
             InitializeComponent();
         }
