@@ -5,7 +5,7 @@
     xmlns:behaviors="clr-namespace:vwatch.Behaviors"
     xmlns:controls="clr-namespace:vwatch.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:interactivity="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     x:Name="VWatchConfigurationWindow"
     Title="VWatch: Configuration Settings"
@@ -25,9 +25,9 @@
         </ResourceDictionary>
     </Window.Resources>
 
-    <interactivity:Interaction.Behaviors>
-        <behaviors:DataGridDeselect DeselectCommand="{Binding ClearSelectionCommand}" />
-    </interactivity:Interaction.Behaviors>
+    <i:Interaction.Behaviors>
+        <behaviors:DataGridDeselect />
+    </i:Interaction.Behaviors>
 
     <Grid Background="{StaticResource PrimaryBackgroundColor}">
 

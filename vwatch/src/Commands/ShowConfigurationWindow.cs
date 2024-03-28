@@ -15,8 +15,9 @@ namespace vwatch
         protected override async Task ExecuteAsync(OleMenuCmdEventArgs e)
         {
             var userSettingsService = vwatchPackage.ServiceProvider.GetService<IUserSettingsService>();
+            var processMonitoringService = vwatchPackage.ServiceProvider.GetService<IProcessMonitoringService>();
 
-            var viewModel = new ConfigurationWindowViewModel(userSettingsService);
+            var viewModel = new ConfigurationWindowViewModel(userSettingsService, processMonitoringService);
             await viewModel.LoadConfigurationAsync();
 
             ConfigurationWindow window = new ConfigurationWindow

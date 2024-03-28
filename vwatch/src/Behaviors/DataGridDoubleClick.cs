@@ -6,13 +6,13 @@ using System.Windows.Media;
 
 namespace vwatch.Behaviors
 {
-    public static class DataGridDoubleClickBehavior
+    public static class DataGridDoubleClick
     {
         public static readonly DependencyProperty CommandProperty =
             DependencyProperty.RegisterAttached(
                 "Command",
                 typeof(ICommand),
-                typeof(DataGridDoubleClickBehavior),
+                typeof(DataGridDoubleClick),
                 new PropertyMetadata(null, OnCommandPropertyChanged));
 
         public static void SetCommand(DependencyObject d, ICommand value)

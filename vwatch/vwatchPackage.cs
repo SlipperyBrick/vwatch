@@ -47,6 +47,8 @@ namespace vwatch
 
             services.AddSingleton<IUserSettingsService, UserSettingsService>(provider =>
                 new UserSettingsService(provider.GetRequiredService<WritableSettingsStore>()));
+
+            services.AddSingleton<IProcessMonitoringService, ProcessMonitoringService>();
         }
 
         public static T GetService<T>() where T : class

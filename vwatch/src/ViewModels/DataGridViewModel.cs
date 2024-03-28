@@ -89,7 +89,7 @@ namespace vwatch.ViewModels
             return Items.Any();
         }
 
-        private void ClearSelection()
+        public void ClearSelection()
         {
             SelectedItem = null;
         }
