@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Management;
@@ -18,12 +19,25 @@ namespace vwatch.Services
             // Implement process monitoring logic here
             Debug.WriteLine("Process monitoring started.");
 
-            // Example using ManagementEventWatcher (needs to run on a separate thread/task)
-            var startWatchQuery = new WqlEventQuery("SELECT * FROM Win32_ProcessStartTrace");
-            var startWatch = new ManagementEventWatcher(startWatchQuery);
-            startWatch.EventArrived += (sender, args) => ProcessStarted(args);
+            _ = Task.Run(() =>
+            {
+                try
+                {
+                    var startWatchQuery = new WqlEventQuery("SELECT * FROM Win32_ProcessStartTrace");
 
-            startWatch.Start();
+                    using (var startWatch = new ManagementEventWatcher(startWatchQuery))
+                    {
+                        startWatch.EventArrived += (sender, args) => ProcessStarted(args);
+                        startWatch.Start();
+
+                        System.Threading.Thread.Sleep(System.Threading.Timeout.Infinite);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine($"Failed to start process monitoring: {ex.Message}");
+                }
+            });
         }
 
         private void ProcessStarted(EventArrivedEventArgs args)
