@@ -38,7 +38,7 @@ namespace vwatch
         {
             services.AddSingleton<ConfigurationWindowViewModel>();
 
-            services.AddSingleton<WritableSettingsStore>(provider =>
+            services.AddSingleton(provider =>
             {
                 ThreadHelper.ThrowIfNotOnUIThread();
                 var shellSettingsManager = new ShellSettingsManager(this);
@@ -47,6 +47,12 @@ namespace vwatch
 
             services.AddSingleton<IUserSettingsService, UserSettingsService>(provider =>
                 new UserSettingsService(provider.GetRequiredService<WritableSettingsStore>()));
+
+            services.AddSingleton(provider =>
+            {
+                ThreadHelper.ThrowIfNotOnUIThread();
+                return (EnvDTE80.DTE2)GetGlobalService(typeof(EnvDTE.DTE));
+            });
 
             services.AddSingleton<IProcessMonitoringService, ProcessMonitoringService>();
         }

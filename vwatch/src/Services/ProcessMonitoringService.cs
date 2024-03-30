@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Management;
+using System.Threading;
 using System.Threading.Tasks;
 
 using vwatch.Models;
@@ -13,50 +12,43 @@ namespace vwatch.Services
     public class ProcessMonitoringService : IProcessMonitoringService
     {
         private List<DataGridModel> _processes = new List<DataGridModel>();
+        private CancellationTokenSource _cancellationTokenSource;
+
+        public ProcessMonitoringService()
+        {
+            _cancellationTokenSource = new CancellationTokenSource();
+        }
 
         public void StartProcessMonitoring()
         {
-            // Implement process monitoring logic here
             Debug.WriteLine("Process monitoring started.");
-
-            _ = Task.Run(() =>
-            {
-                try
-                {
-                    var startWatchQuery = new WqlEventQuery("SELECT * FROM Win32_ProcessStartTrace");
-
-                    using (var startWatch = new ManagementEventWatcher(startWatchQuery))
-                    {
-                        startWatch.EventArrived += (sender, args) => ProcessStarted(args);
-                        startWatch.Start();
-
-                        System.Threading.Thread.Sleep(System.Threading.Timeout.Infinite);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Debug.WriteLine($"Failed to start process monitoring: {ex.Message}");
-                }
-            });
+            _ = Task.Run(() => MonitorProcessesAsync(_cancellationTokenSource.Token));
         }
 
-        private void ProcessStarted(EventArrivedEventArgs args)
+        private async Task MonitorProcessesAsync(CancellationToken cancellationToken)
         {
-            string startedProcessName = args.NewEvent.Properties["ProcessName"].Value.ToString();
-
-            var matchingModel = _processes.FirstOrDefault(model => model.Filename == startedProcessName);
-            if (matchingModel != null)
+            while (!cancellationToken.IsCancellationRequested)
             {
-                // Match found - attach debugger based on the model's properties
-                Debug.WriteLine($"Process matched: {startedProcessName}");
-                AttachDebuggerToProcess(matchingModel);
+                foreach (var model in _processes)
+                {
+                    var processName = System.IO.Path.GetFileNameWithoutExtension(model.Filename);
+                    var processes = Process.GetProcessesByName(processName);
+
+                    if (processes.Length > 0)
+                    {
+                        Debug.WriteLine($"Process matched: {model.Filename}");
+                        AttachDebuggerToProcess(model);
+                    }
+                }
+
+                await Task.Delay(5000, cancellationToken);
             }
         }
 
         public void StopProcessMonitoring()
         {
-            // Implement logic to stop monitoring here
             Debug.WriteLine("Process monitoring stopped.");
+            _cancellationTokenSource.Cancel();
         }
 
         public void UpdateMonitoringList(IEnumerable<DataGridModel> processes)
@@ -68,6 +60,7 @@ namespace vwatch.Services
         {
             // Implement debugger attachment logic based on model properties
             Debug.WriteLine($"Attaching to process: {model}");
+            // Note: Actual attachment logic to be implemented as per your requirements.
         }
     }
 }
