@@ -4,49 +4,48 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    d:DesignHeight="70"
-    d:DesignWidth="800"
     mc:Ignorable="d">
 
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Styles/Theme.xaml" />
-                <ResourceDictionary Source="Styles/Button.xaml" />
-                <ResourceDictionary Source="Styles/Checkbox.xaml" />
+                <ResourceDictionary Source="/vwatch;component/Resources/Styles/Theme.xaml" />
+                <ResourceDictionary Source="/vwatch;component/Resources/Styles/Button.xaml" />
+                <ResourceDictionary Source="/vwatch;component/Resources/Styles/Checkbox.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
 
-    <Grid Grid.Row="0">
+    <Border Padding="16" Style="{StaticResource RoundedCornerPanel}">
+        <Grid>
 
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="Auto" />
-        </Grid.ColumnDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
 
-        <CheckBox
-            Grid.Column="0"
-            Margin="8"
-            VerticalContentAlignment="Center"
-            Content="Enable VWatch. Automatically attach to these processes when they start:"
-            Foreground="{StaticResource ControlForegroundColor}"
-            IsChecked="{Binding DataContext.CheckboxState, Mode=TwoWay, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
-            Style="{StaticResource CheckboxStyle}" />
-        <Button
-            Grid.Column="1"
-            Margin="8"
-            Padding="8,2"
-            Command="{Binding AddItemCommand}"
-            Content="Add"
-            Style="{StaticResource ButtonStyle}" />
-        <Button
-            Grid.Column="2"
-            Margin="8"
-            Command="{Binding RemoveItemCommand}"
-            Content="Remove"
-            Style="{StaticResource ButtonStyle}" />
-
-    </Grid>
+            <CheckBox
+                Grid.Column="0"
+                Margin="8"
+                VerticalContentAlignment="Center"
+                Content="Enable VWatch to automatically attach the debugger to your processes listed below."
+                Foreground="{StaticResource Text}"
+                IsChecked="{Binding DataContext.CheckboxState, Mode=TwoWay, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
+                Style="{StaticResource CheckboxStyle}" />
+            <Button
+                Grid.Column="1"
+                Margin="8"
+                Padding="8,2"
+                Command="{Binding AddItemCommand}"
+                Content="Add"
+                Style="{StaticResource ButtonStyle}" />
+            <Button
+                Grid.Column="2"
+                Margin="8"
+                Command="{Binding RemoveItemCommand}"
+                Content="Remove"
+                Style="{StaticResource ButtonStyle}" />
+        </Grid>
+    </Border>
 </UserControl>

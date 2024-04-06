@@ -13,8 +13,8 @@
         <Setter Property="Margin" Value="8" />
         <Setter Property="Padding" Value="8,2" />
         <Setter Property="BorderThickness" Value="0" />
-        <Setter Property="Background" Value="{StaticResource ButtonBackgroundColor}" />
-        <Setter Property="Foreground" Value="{StaticResource ButtonForegroundColor}" />
+        <Setter Property="Background" Value="{StaticResource Accent}" />
+        <Setter Property="Foreground" Value="{StaticResource Text}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
@@ -36,7 +36,7 @@
                             <Setter Property="Background" Value="#005b99" />
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="Background" Value="{StaticResource ControlBackgroundColor}" />
+                            <Setter Property="Background" Value="{StaticResource Accent}" />
                             <Setter Property="Opacity" Value="0.25" />
                         </Trigger>
                     </ControlTemplate.Triggers>

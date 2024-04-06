@@ -12,7 +12,7 @@ namespace vwatch
     /// </summary>
     internal sealed partial class PackageGuids
     {
-        public const string vwatchString = "71a2b0cc-2361-4b1f-8b70-efcdebdc2573";
+        public const string vwatchString = "54dc519c-c83f-48fa-8520-d6ae19513772";
         public static Guid vwatch = new Guid(vwatchString);
 
         public const string GuidVwatchImagesString = "ad951d5e-70ca-4db5-b3ba-272da224b1d1";

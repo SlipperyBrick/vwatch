@@ -5,8 +5,8 @@
     </ResourceDictionary.MergedDictionaries>
 
     <Style x:Key="CheckboxStyle" TargetType="{x:Type CheckBox}">
-        <Setter Property="Foreground" Value="{StaticResource ButtonForegroundColor}" />
-        <Setter Property="BorderBrush" Value="{StaticResource ControlBackgroundColor}" />
+        <Setter Property="Foreground" Value="{StaticResource Text}" />
+        <Setter Property="BorderBrush" Value="{StaticResource Accent}" />
         <Setter Property="HorizontalAlignment" Value="Left" />
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="Template">
@@ -43,12 +43,12 @@
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsChecked" Value="True">
                             <Setter TargetName="CheckMark" Property="Visibility" Value="Visible" />
-                            <Setter Property="Background" Value="{StaticResource ButtonBackgroundColor}" />
+                            <Setter Property="Background" Value="{StaticResource Text}" />
                             <Setter Property="BorderThickness" Value="0" />
                         </Trigger>
                         <Trigger Property="IsChecked" Value="False">
                             <Setter TargetName="CheckMark" Property="Visibility" Value="Collapsed" />
-                            <Setter Property="Background" Value="{StaticResource ButtonForegroundColor}" />
+                            <Setter Property="Background" Value="{StaticResource Accent}" />
                             <Setter Property="BorderThickness" Value="0.5" />
                         </Trigger>
                     </ControlTemplate.Triggers>

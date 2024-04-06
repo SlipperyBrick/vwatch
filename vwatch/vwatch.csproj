@@ -10,7 +10,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectTypeGuids>{82b43b9b-a64c-4715-b499-d71e9ca2bd60};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <ProjectGuid>{7ED2B56C-7B8D-4EFF-B289-7D5400229403}</ProjectGuid>
+    <ProjectGuid>{E1E56111-6326-46CA-A7C2-E4C07038BEB9}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>vwatch</RootNamespace>
@@ -46,52 +46,28 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="src\Behaviors\ConfigurationWindowClose.cs" />
-    <Compile Include="src\Behaviors\DataGridDeselect.cs" />
-    <Compile Include="src\Behaviors\DataGridDoubleClick.cs" />
     <Compile Include="src\Commands\ShowConfigurationWindow.cs" />
-    <Compile Include="src\Controls\ConfigurationWindow.xaml.cs">
-      <DependentUpon>ConfigurationWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="src\Controls\Sidebar.xaml.cs">
-      <DependentUpon>Sidebar.xaml</DependentUpon>
-    </Compile>
     <Compile Include="src\Controls\Footer.xaml.cs">
       <DependentUpon>Footer.xaml</DependentUpon>
     </Compile>
     <Compile Include="src\Controls\Header.xaml.cs">
       <DependentUpon>Header.xaml</DependentUpon>
     </Compile>
-    <Compile Include="src\Controls\DataGrid.xaml.cs">
-      <DependentUpon>DataGrid.xaml</DependentUpon>
+    <Compile Include="src\Controls\ProcessList.xaml.cs">
+      <DependentUpon>ProcessList.xaml</DependentUpon>
     </Compile>
-    <Compile Include="src\Models\DataGridModel.cs" />
-    <Compile Include="src\Models\UserSettingsModel.cs" />
-    <Compile Include="src\Services\Interfaces\IProcessMonitoringService.cs" />
-    <Compile Include="src\Services\Interfaces\IUserSettingsService.cs" />
-    <Compile Include="src\Services\ProcessMonitoringService.cs" />
-    <Compile Include="src\Services\UserSettingsService.cs" />
-    <Compile Include="src\ViewModels\ConfigurationWindowViewModel.cs" />
-    <Compile Include="src\ViewModels\DataGridViewModel.cs" />
+    <Compile Include="src\Views\ConfigurationWindow.xaml.cs">
+      <DependentUpon>ConfigurationWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="src\Controls\Sidebar.xaml.cs">
+      <DependentUpon>Sidebar.xaml</DependentUpon>
+    </Compile>
     <Compile Include="vwatchPackage.cs" />
     <Compile Include="source.extension.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>source.extension.vsixmanifest</DependentUpon>
     </Compile>
-    <Compile Include="VSCommandTable.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>VSCommandTable.vsct</DependentUpon>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Fonts\readexpro.ttf" />
-    <None Include="source.extension.vsixmanifest">
-      <SubType>Designer</SubType>
-      <Generator>VsixManifestGenerator</Generator>
-      <LastGenOutput>source.extension.cs</LastGenOutput>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <VSCTCompile Include="VSCommandTable.vsct">
@@ -99,6 +75,25 @@
       <Generator>VsctGenerator</Generator>
       <LastGenOutput>VSCommandTable.cs</LastGenOutput>
     </VSCTCompile>
+    <Compile Include="VSCommandTable.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>VSCommandTable.vsct</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\vwatch-icon-16.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\vwatch-icon-512.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <None Include="Resources\Fonts\readexpro.ttf" />
+    <None Include="source.extension.vsixmanifest">
+      <SubType>Designer</SubType>
+      <Generator>VsixManifestGenerator</Generator>
+      <LastGenOutput>source.extension.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="PresentationCore" />
@@ -111,41 +106,22 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Community.VisualStudio.VSCT" Version="16.0.29.6" PrivateAssets="all" />
-    <PackageReference Include="Community.VisualStudio.Toolkit.17" Version="17.0.507" ExcludeAssets="Runtime">
-      <IncludeAssets>compile; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="CommunityToolkit.Mvvm">
-      <Version>8.2.2</Version>
-    </PackageReference>
-    <PackageReference Include="Microsoft.CSharp">
-      <Version>4.7.0</Version>
-    </PackageReference>
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection">
-      <Version>8.0.0</Version>
-    </PackageReference>
-    <PackageReference Include="Microsoft.VSSDK.BuildTools" Version="17.9.3174">
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
-    <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf">
-      <Version>1.1.77</Version>
-    </PackageReference>
-    <PackageReference Include="System.Management">
-      <Version>8.0.0</Version>
-    </PackageReference>
-    <PackageReference Include="System.Text.Json">
-      <Version>8.0.3</Version>
-    </PackageReference>
+    <PackageReference Include="Community.VisualStudio.Toolkit.17" Version="17.0.451" ExcludeAssets="Runtime" />
+    <PackageReference Include="Microsoft.VSSDK.BuildTools" Version="17.0.5232" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="src\Controls\ConfigurationWindow.xaml">
-      <SubType>Designer</SubType>
+    <Folder Include="src\ViewModels\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Styles\Checkbox.xaml">
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="src\Controls\Sidebar.xaml">
-      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="Resources\Styles\Button.xaml">
       <Generator>MSBuild:Compile</Generator>
-    </Page>
+    </Resource>
+    <Resource Include="Resources\Styles\List.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Resource>
     <Page Include="src\Controls\Footer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -154,34 +130,22 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="src\Controls\DataGrid.xaml">
+    <Page Include="src\Controls\ProcessList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Resource Include="src\Controls\Styles\Checkbox.xaml">
+    <Page Include="src\Views\ConfigurationWindow.xaml">
+      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Resource>
-    <Resource Include="src\Controls\Styles\DataGrid.xaml">
+    </Page>
+    <Page Include="src\Controls\Sidebar.xaml">
+      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Resource>
-    <Resource Include="src\Controls\Styles\Button.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Resource>
-    <Resource Include="src\Controls\Styles\Theme.xaml">
+    </Page>
+    <Resource Include="Resources\Styles\Theme.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Resource>
   </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Icons\vwatch-icon-16.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Icons\vwatch-icon-512.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-  </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\VSSDK\Microsoft.VsSDK.targets" Condition="'$(VSToolsPath)' != ''" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

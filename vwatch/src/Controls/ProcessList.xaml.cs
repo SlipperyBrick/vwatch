@@ -3,11 +3,11 @@
 namespace vwatch.Controls
 {
     /// <summary>
-    /// Interaction logic for Header.xaml
+    /// Interaction logic for ProcessList.xaml
     /// </summary>
-    public partial class Header : UserControl
+    public partial class ProcessList : UserControl
     {
-        public Header()
+        public ProcessList()
         {
             InitializeComponent();
         }

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
-        <Identity Id="vwatch.ab4ce8bc-e458-4d53-b679-e9f76a54d909" Version="1.0" Language="en-US" Publisher="David James" />
+        <Identity Id="vwatch.3b85e66e-c6a2-4dc9-8af5-6772207a9469" Version="1.0" Language="en-US" Publisher="David James" />
         <DisplayName>VWatch</DisplayName>
-        <Description xml:space="preserve">A Visual Studio extension that monitors a selected process and automatically attaches the debugger. VWatch can be configured to monitor multiple target processes for managed and native debugging sessions.</Description>
-        <Icon>Resources\Icons\vwatch-icon.png</Icon>
-        <PreviewImage>Resources\Icons\vwatch-icon.png</PreviewImage>
+        <Description xml:space="preserve">A Visual Studio extension that monitors a selected process and automatically attaches the debugger. VWatch can be configured to monitor multiple target processes for automatic debug attachment.</Description>
+        <Icon>Resources\Icons\vwatch-icon-512.png</Icon>
+        <PreviewImage>Resources\Icon.png</PreviewImage>
     </Metadata>
     <Installation>
         <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[17.0, 18.0)">

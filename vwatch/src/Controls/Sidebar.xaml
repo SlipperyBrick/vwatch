@@ -4,32 +4,39 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    d:DesignHeight="600"
-    d:DesignWidth="200"
+    Margin="64"
     mc:Ignorable="d">
 
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/vwatch;component/Resources/Styles/Theme.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
     <!--  Application branding  -->
-    <Border Width="Auto" VerticalAlignment="Stretch">
+    <Border Padding="64" Style="{StaticResource RoundedCornerPanel}">
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
             <Image
-                Width="48"
-                Height="48"
+                Width="128"
+                Height="128"
                 Source="/vwatch;component/Resources/Icons/vwatch-icon-512.png" />
             <TextBlock
                 Margin="0,12,0,0"
                 FontFamily="/vwatch;component/Resources/Fonts/#readexpro"
-                FontSize="14"
+                FontSize="36"
                 FontWeight="Bold"
                 Foreground="White"
                 Text="VWATCH"
                 TextAlignment="Center" />
             <TextBlock
-                Margin="0,8,0,0"
+                Margin="0,4,0,0"
                 FontFamily="/vwatch;component/Resources/Fonts/#readexpro"
                 FontSize="10"
                 FontWeight="Regular"
                 Foreground="White"
-                Text="Auto Debug Attachment"
+                Text="AUTOMATIC DEBUG ATTACHMENT"
                 TextAlignment="Center" />
         </StackPanel>
     </Border>
