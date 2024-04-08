@@ -1,3 +1,5 @@
+using vwatch.ViewModels;
+
 namespace vwatch
 {
     [Command(PackageIds.ShowConfigurationWindow)]
@@ -6,6 +8,7 @@ namespace vwatch
         protected override async Task ExecuteAsync(OleMenuCmdEventArgs e)
         {
             ConfigurationWindow window = new ConfigurationWindow();
+            window.DataContext = new ConfigurationWindowViewModel();
             window.Show();
         }
     }

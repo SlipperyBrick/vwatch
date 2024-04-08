@@ -12,6 +12,7 @@
                 <ResourceDictionary Source="/vwatch;component/Resources/Styles/Theme.xaml" />
                 <ResourceDictionary Source="/vwatch;component/Resources/Styles/List.xaml" />
             </ResourceDictionary.MergedDictionaries>
+            <BooleanToVisibilityConverter x:Key="IsExecutablesEmptyConverter" />
         </ResourceDictionary>
     </UserControl.Resources>
 
@@ -42,18 +43,26 @@
                 Grid.Row="1"
                 BorderThickness="0"
                 ItemContainerStyle="{StaticResource ProcessListViewItemStyle}"
+                ItemsSource="{Binding Executables}"
                 Style="{StaticResource ProcessListViewStyle}">
-                <!--  ListView content goes here  -->
-                <TextBox
-                    x:Name="PlaceholderTextBox"
-                    Padding="12"
-                    HorizontalContentAlignment="Center"
-                    Background="Transparent"
-                    BorderThickness="0"
-                    Foreground="{StaticResource Text}"
-                    Opacity="0.25"
-                    Text="Double-click here or press Add to create and entry" />
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding FilePath}" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
             </ListView>
+
+            <!--  Placeholder TextBlock  -->
+            <TextBlock
+                Grid.Row="1"
+                Padding="12"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Top"
+                Foreground="{StaticResource Text}"
+                IsHitTestVisible="False"
+                Opacity="0.25"
+                Text="Double-click here or press Add to create an entry"
+                Visibility="{Binding IsExecutablesEmpty, Converter={StaticResource IsExecutablesEmptyConverter}}" />
 
         </Grid>
     </Border>

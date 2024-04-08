@@ -3,7 +3,7 @@
     <Metadata>
         <Identity Id="vwatch.3b85e66e-c6a2-4dc9-8af5-6772207a9469" Version="1.0" Language="en-US" Publisher="David James" />
         <DisplayName>VWatch</DisplayName>
-        <Description xml:space="preserve">A Visual Studio extension that monitors a selected process and automatically attaches the debugger. VWatch can be configured to monitor multiple target processes for automatic debug attachment.</Description>
+        <Description xml:space="preserve">A Visual Studio extension that monitors target processes and automatically attaches the debugger to them. VWatch can be configured to monitor multiple target processes for automatic debug attachment and can be enabled or disabled.</Description>
         <Icon>Resources\Icons\vwatch-icon-512.png</Icon>
         <PreviewImage>Resources\Icon.png</PreviewImage>
     </Metadata>

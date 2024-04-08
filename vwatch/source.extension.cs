@@ -9,7 +9,7 @@ namespace vwatch
     {
         public const string Id = "vwatch.3b85e66e-c6a2-4dc9-8af5-6772207a9469";
         public const string Name = "VWatch";
-        public const string Description = @"A Visual Studio extension that monitors a selected process and automatically attaches the debugger. VWatch can be configured to monitor multiple target processes for automatic debug attachment.";
+        public const string Description = @"A Visual Studio extension that monitors target processes and automatically attaches the debugger to them. VWatch can be configured to monitor multiple target processes for automatic debug attachment and can be enabled or disabled.";
         public const string Language = "en-US";
         public const string Version = "1.0";
         public const string Author = "David James";

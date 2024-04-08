@@ -14,6 +14,7 @@
                 <ControlTemplate TargetType="CheckBox">
                     <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
                         <Border
+                            x:Name="CheckMarkBorder"
                             Width="16"
                             Height="16"
                             HorizontalAlignment="Center"
@@ -26,7 +27,7 @@
                                 x:Name="CheckMark"
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Center"
-                                Data="M 2,5 L 4,7 L 9,1"
+                                Data="M 2,5 L 4,7 L 10,1"
                                 Stroke="{TemplateBinding Foreground}"
                                 StrokeLineJoin="Miter"
                                 StrokeThickness="2"
@@ -43,13 +44,14 @@
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsChecked" Value="True">
                             <Setter TargetName="CheckMark" Property="Visibility" Value="Visible" />
-                            <Setter Property="Background" Value="{StaticResource Text}" />
-                            <Setter Property="BorderThickness" Value="0" />
+                            <Setter TargetName="CheckMark" Property="Stroke" Value="{StaticResource Text}" />
+                            <Setter TargetName="CheckMarkBorder" Property="Background" Value="{StaticResource Accent}" />
+                            <Setter TargetName="CheckMarkBorder" Property="BorderThickness" Value="0" />
                         </Trigger>
                         <Trigger Property="IsChecked" Value="False">
                             <Setter TargetName="CheckMark" Property="Visibility" Value="Collapsed" />
-                            <Setter Property="Background" Value="{StaticResource Accent}" />
-                            <Setter Property="BorderThickness" Value="0.5" />
+                            <Setter TargetName="CheckMarkBorder" Property="Background" Value="{StaticResource Text}" />
+                            <Setter TargetName="CheckMarkBorder" Property="BorderThickness" Value="0" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

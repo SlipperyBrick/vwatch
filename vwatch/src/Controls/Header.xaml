@@ -31,19 +31,18 @@
                 VerticalContentAlignment="Center"
                 Content="Enable VWatch to automatically attach the debugger to your processes listed below."
                 Foreground="{StaticResource Text}"
-                IsChecked="{Binding DataContext.CheckboxState, Mode=TwoWay, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
                 Style="{StaticResource CheckboxStyle}" />
             <Button
                 Grid.Column="1"
                 Margin="8"
                 Padding="8,2"
-                Command="{Binding AddItemCommand}"
+                Command="{Binding AddExecutableCommand}"
                 Content="Add"
                 Style="{StaticResource ButtonStyle}" />
             <Button
                 Grid.Column="2"
                 Margin="8"
-                Command="{Binding RemoveItemCommand}"
+                Command="{Binding RemoveExecutableCommand}"
                 Content="Remove"
                 Style="{StaticResource ButtonStyle}" />
         </Grid>
