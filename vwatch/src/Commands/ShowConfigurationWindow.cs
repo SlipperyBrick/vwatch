@@ -1,4 +1,4 @@
-using vwatch.ViewModels;
+using vwatch.mvm.ViewModels;
 
 namespace vwatch
 {
@@ -7,8 +7,7 @@ namespace vwatch
     {
         protected override async Task ExecuteAsync(OleMenuCmdEventArgs e)
         {
-            ConfigurationWindow window = new ConfigurationWindow();
-            window.DataContext = new ConfigurationWindowViewModel();
+            ConfigurationWindow window = new ConfigurationWindow(new ConfigurationWindowViewModel());
             window.Show();
         }
     }

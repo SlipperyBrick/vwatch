@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using vwatch.mvm.ViewModels;
 
 namespace vwatch
 {
@@ -7,9 +8,13 @@ namespace vwatch
     /// </summary>
     public partial class ConfigurationWindow : Window
     {
-        public ConfigurationWindow()
+        public ConfigurationWindow(ConfigurationWindowViewModel viewModel)
         {
             InitializeComponent();
+
+            this.DataContext = viewModel;
+
+            viewModel.RequestClose += (sender, e) => this.Close();
         }
     }
 }

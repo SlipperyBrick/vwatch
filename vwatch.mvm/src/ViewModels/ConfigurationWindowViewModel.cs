@@ -2,9 +2,9 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System.Collections.ObjectModel;
 
-using vwatch.Models;
+using vwatch.mvm.Models;
 
-namespace vwatch.ViewModels
+namespace vwatch.mvm.ViewModels
 {
     public partial class ConfigurationWindowViewModel : ObservableObject
     {
@@ -12,7 +12,14 @@ namespace vwatch.ViewModels
         [NotifyPropertyChangedFor(nameof(IsExecutablesEmpty))]
         private ObservableCollection<Executable> executables;
 
+        [ObservableProperty]
+        private Executable selectedExecutable;
+
         public bool IsExecutablesEmpty => Executables.Count == 0;
+
+        public bool CanRemove => !IsExecutablesEmpty;
+
+        public event EventHandler RequestClose;
 
         public ConfigurationWindowViewModel()
         {
@@ -25,13 +32,26 @@ namespace vwatch.ViewModels
             Executables.Add(new Executable());
         }
 
-        [RelayCommand]
+        [RelayCommand(CanExecute = nameof(CanRemove))]
         public void RemoveExecutable(Executable executable)
         {
-            if (Executables.Contains(executable))
+            if (Executables == null || !Executables.Contains(executable))
+            {
+                if (Executables.Any())
+                {
+                    Executables?.RemoveAt(Executables.Count - 1);
+                }
+            }
+            else
             {
                 Executables.Remove(executable);
             }
+        }
+
+        [RelayCommand]
+        public void Cancel()
+        {
+            RequestClose?.Invoke(this, EventArgs.Empty);
         }
     }
 }
