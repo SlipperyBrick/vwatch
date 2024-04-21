@@ -1,5 +1,5 @@
 ﻿using System.Windows;
-using vwatch.mvm.ViewModels;
+using vwatch.ViewModels;
 
 namespace vwatch
 {

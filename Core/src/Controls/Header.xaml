@@ -1,10 +1,10 @@
 ﻿<UserControl
-    x:Class="vwatch.Controls.Footer"
+    x:Class="vwatch.Controls.Header"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:viewmodels="clr-namespace:vwatch.mvm.ViewModels;assembly=vwatch.mvm"
+    xmlns:viewmodels="clr-namespace:vwatch.ViewModels;assembly=ViewModels"
     d:DataContext="{d:DesignInstance Type=viewmodels:ConfigurationWindowViewModel}"
     mc:Ignorable="d">
 
@@ -19,21 +19,36 @@
     </UserControl.Resources>
 
     <Border Padding="16" Style="{StaticResource RoundedCornerPanel}">
-        <StackPanel
-            HorizontalAlignment="Right"
-            VerticalAlignment="Center"
-            Orientation="Horizontal">
+        <Grid>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <CheckBox
+                Grid.Column="0"
+                Margin="8"
+                VerticalContentAlignment="Center"
+                Content="Enable VWatch to automatically attach the debugger to your processes listed below."
+                Foreground="{StaticResource Text}"
+                IsChecked="{Binding Enabled}"
+                Style="{StaticResource CheckboxStyle}" />
             <Button
+                Grid.Column="1"
                 Margin="8"
                 Padding="8,2"
-                Content="OK"
+                Command="{Binding AddExecutableCommand}"
+                Content="Add"
                 Style="{StaticResource ButtonStyle}" />
             <Button
+                Grid.Column="2"
                 Margin="8"
-                Padding="8,2"
-                Command="{Binding CancelCommand}"
-                Content="Cancel"
+                Command="{Binding RemoveExecutableCommand}"
+                Content="Remove"
+                IsEnabled="{Binding CanRemove}"
                 Style="{StaticResource ButtonStyle}" />
-        </StackPanel>
+        </Grid>
     </Border>
 </UserControl>

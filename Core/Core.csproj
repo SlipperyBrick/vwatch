@@ -46,6 +46,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\Converters\BooleanToVisibilityInverseConverter.cs" />
     <Compile Include="src\Commands\ShowConfigurationWindow.cs" />
     <Compile Include="src\Controls\Footer.xaml.cs">
       <DependentUpon>Footer.xaml</DependentUpon>
@@ -62,7 +63,7 @@
     <Compile Include="src\Controls\Sidebar.xaml.cs">
       <DependentUpon>Sidebar.xaml</DependentUpon>
     </Compile>
-    <Compile Include="vwatchPackage.cs" />
+    <Compile Include="VWatchPackage.cs" />
     <Compile Include="source.extension.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -113,6 +114,9 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf">
+      <Version>1.1.77</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Styles\Checkbox.xaml">
@@ -149,9 +153,9 @@
     </Resource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\vwatch.mvm\vwatch.mvm.csproj">
-      <Project>{7e6a8370-7e91-491f-8f5c-0e31200736a7}</Project>
-      <Name>vwatch.mvm</Name>
+    <ProjectReference Include="..\ViewModels\ViewModels.csproj">
+      <Project>{6fc81a66-a3a7-4ed2-a68e-02b51765be03}</Project>
+      <Name>ViewModels</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

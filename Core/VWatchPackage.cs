@@ -12,7 +12,7 @@ namespace vwatch
     [InstalledProductRegistration(Vsix.Name, Vsix.Description, Vsix.Version)]
     [ProvideMenuResource("Menus.ctmenu", 1)]
     [Guid(PackageGuids.vwatchString)]
-    public sealed class vwatchPackage : ToolkitPackage
+    public sealed class VWatchPackage : ToolkitPackage
     {
         protected override async Task InitializeAsync(CancellationToken cancellationToken, IProgress<ServiceProgressData> progress)
         {

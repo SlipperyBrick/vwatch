@@ -2,9 +2,11 @@
     x:Class="vwatch.Controls.ProcessList"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converters="clr-namespace:vwatch.Resources.Converters"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:interactions="http://schemas.microsoft.com/xaml/behaviors"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:viewmodels="clr-namespace:vwatch.mvm.ViewModels;assembly=vwatch.mvm"
+    xmlns:viewmodels="clr-namespace:vwatch.ViewModels;assembly=ViewModels"
     d:DataContext="{d:DesignInstance Type=viewmodels:ConfigurationWindowViewModel}"
     mc:Ignorable="d">
 
@@ -15,6 +17,7 @@
                 <ResourceDictionary Source="/vwatch;component/Resources/Styles/List.xaml" />
             </ResourceDictionary.MergedDictionaries>
             <BooleanToVisibilityConverter x:Key="IsExecutablesEmptyConverter" />
+            <converters:BooleanToVisibilityInverseConverter x:Key="BooleanToVisibilityInverseConverter" />
         </ResourceDictionary>
     </UserControl.Resources>
 
@@ -46,11 +49,28 @@
                 BorderThickness="0"
                 ItemContainerStyle="{StaticResource ProcessListViewItemStyle}"
                 ItemsSource="{Binding Executables}"
+                ScrollViewer.VerticalScrollBarVisibility="Auto"
                 SelectedItem="{Binding SelectedExecutable, Mode=TwoWay}"
                 Style="{StaticResource ProcessListViewStyle}">
+
+                <interactions:Interaction.Triggers>
+                    <interactions:EventTrigger EventName="MouseDoubleClick">
+                        <interactions:InvokeCommandAction x:Name="AddExecutableCommand" Command="{Binding AddExecutableCommand}" />
+                    </interactions:EventTrigger>
+                </interactions:Interaction.Triggers>
+
+                <ListView.Resources>
+                    <Style BasedOn="{StaticResource ThinScrollBarStyle}" TargetType="{x:Type ScrollBar}" />
+                </ListView.Resources>
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <TextBox Text="{Binding FilePath}" />
+                        <Grid>
+                            <TextBlock Text="{Binding FilePath}" Visibility="{Binding IsSelected, RelativeSource={RelativeSource AncestorType=ListViewItem}, Converter={StaticResource BooleanToVisibilityInverseConverter}}" />
+                            <TextBox
+                                Style="{StaticResource ListViewItemTextBoxStyle}"
+                                Text="{Binding FilePath, UpdateSourceTrigger=PropertyChanged}"
+                                Visibility="{Binding IsSelected, RelativeSource={RelativeSource AncestorType=ListViewItem}, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                        </Grid>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

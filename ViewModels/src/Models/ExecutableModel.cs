@@ -1,4 +1,4 @@
-﻿namespace vwatch.mvm.Models
+﻿namespace vwatch.Models
 {
     public class Executable
     {

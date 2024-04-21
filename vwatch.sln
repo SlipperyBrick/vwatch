@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34723.18
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "vwatch", "vwatch\vwatch.csproj", "{E1E56111-6326-46CA-A7C2-E4C07038BEB9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{E1E56111-6326-46CA-A7C2-E4C07038BEB9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "vwatch.mvm", "vwatch.mvm\vwatch.mvm.csproj", "{7E6A8370-7E91-491F-8F5C-0E31200736A7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViewModels", "ViewModels\ViewModels.csproj", "{6FC81A66-A3A7-4ED2-A68E-02B51765BE03}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,18 +29,18 @@ Global
 		{E1E56111-6326-46CA-A7C2-E4C07038BEB9}.Release|arm64.Build.0 = Release|arm64
 		{E1E56111-6326-46CA-A7C2-E4C07038BEB9}.Release|x86.ActiveCfg = Release|x86
 		{E1E56111-6326-46CA-A7C2-E4C07038BEB9}.Release|x86.Build.0 = Release|x86
-		{7E6A8370-7E91-491F-8F5C-0E31200736A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7E6A8370-7E91-491F-8F5C-0E31200736A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7E6A8370-7E91-491F-8F5C-0E31200736A7}.Debug|arm64.ActiveCfg = Debug|Any CPU
-		{7E6A8370-7E91-491F-8F5C-0E31200736A7}.Debug|arm64.Build.0 = Debug|Any CPU
-		{7E6A8370-7E91-491F-8F5C-0E31200736A7}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{7E6A8370-7E91-491F-8F5C-0E31200736A7}.Debug|x86.Build.0 = Debug|Any CPU
-		{7E6A8370-7E91-491F-8F5C-0E31200736A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7E6A8370-7E91-491F-8F5C-0E31200736A7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7E6A8370-7E91-491F-8F5C-0E31200736A7}.Release|arm64.ActiveCfg = Release|Any CPU
-		{7E6A8370-7E91-491F-8F5C-0E31200736A7}.Release|arm64.Build.0 = Release|Any CPU
-		{7E6A8370-7E91-491F-8F5C-0E31200736A7}.Release|x86.ActiveCfg = Release|Any CPU
-		{7E6A8370-7E91-491F-8F5C-0E31200736A7}.Release|x86.Build.0 = Release|Any CPU
+		{6FC81A66-A3A7-4ED2-A68E-02B51765BE03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6FC81A66-A3A7-4ED2-A68E-02B51765BE03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6FC81A66-A3A7-4ED2-A68E-02B51765BE03}.Debug|arm64.ActiveCfg = Debug|Any CPU
+		{6FC81A66-A3A7-4ED2-A68E-02B51765BE03}.Debug|arm64.Build.0 = Debug|Any CPU
+		{6FC81A66-A3A7-4ED2-A68E-02B51765BE03}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{6FC81A66-A3A7-4ED2-A68E-02B51765BE03}.Debug|x86.Build.0 = Debug|Any CPU
+		{6FC81A66-A3A7-4ED2-A68E-02B51765BE03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6FC81A66-A3A7-4ED2-A68E-02B51765BE03}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6FC81A66-A3A7-4ED2-A68E-02B51765BE03}.Release|arm64.ActiveCfg = Release|Any CPU
+		{6FC81A66-A3A7-4ED2-A68E-02B51765BE03}.Release|arm64.Build.0 = Release|Any CPU
+		{6FC81A66-A3A7-4ED2-A68E-02B51765BE03}.Release|x86.ActiveCfg = Release|Any CPU
+		{6FC81A66-A3A7-4ED2-A68E-02B51765BE03}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
