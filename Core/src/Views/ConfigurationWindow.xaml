@@ -1,0 +1,59 @@
+﻿<Window
+    x:Class="vwatch.ConfigurationWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:vwatch.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="VWatch: Configuration Settings"
+    Width="1160"
+    Height="595"
+    MinWidth="1160"
+    MinHeight="595"
+    Icon="/vwatch;component/Resources/Icons/vwatch-icon-512.png"
+    WindowStartupLocation="CenterScreen"
+    mc:Ignorable="d">
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/vwatch;component/Resources/Styles/Theme.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid Background="{StaticResource Background}">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <controls:Sidebar Grid.Column="0" Margin="16,16,0,16" />
+
+        <Grid Grid.Column="1">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <controls:Header
+                Grid.Row="0"
+                Grid.Column="1"
+                Margin="16" />
+
+            <controls:ProcessList
+                Grid.Row="1"
+                Grid.Column="1"
+                Margin="16,0" />
+
+            <controls:Footer
+                Grid.Row="2"
+                Grid.Column="1"
+                Margin="16" />
+
+        </Grid>
+    </Grid>
+</Window>
