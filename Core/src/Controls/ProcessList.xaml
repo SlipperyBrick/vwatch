@@ -4,7 +4,6 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:converters="clr-namespace:vwatch.Resources.Converters"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:interactions="http://schemas.microsoft.com/xaml/behaviors"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:viewmodels="clr-namespace:vwatch.ViewModels;assembly=ViewModels"
     d:DataContext="{d:DesignInstance Type=viewmodels:ConfigurationWindowViewModel}"
@@ -52,12 +51,6 @@
                 ScrollViewer.VerticalScrollBarVisibility="Auto"
                 SelectedItem="{Binding SelectedExecutable, Mode=TwoWay}"
                 Style="{StaticResource ProcessListViewStyle}">
-
-                <interactions:Interaction.Triggers>
-                    <interactions:EventTrigger EventName="MouseDoubleClick">
-                        <interactions:InvokeCommandAction x:Name="AddExecutableCommand" Command="{Binding AddExecutableCommand}" />
-                    </interactions:EventTrigger>
-                </interactions:Interaction.Triggers>
 
                 <ListView.Resources>
                     <Style BasedOn="{StaticResource ThinScrollBarStyle}" TargetType="{x:Type ScrollBar}" />
